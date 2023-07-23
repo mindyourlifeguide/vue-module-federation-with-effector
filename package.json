@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "@mvp/eslint-config-base":"workspace:*",
+    "prettier": "2.5.1"
+  },
+  "packageManager": "pnpm@7.15.0",
+  "name": "projects"
+}
