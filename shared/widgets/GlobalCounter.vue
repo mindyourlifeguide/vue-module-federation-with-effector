@@ -1,24 +1,29 @@
 <template>
   <div>
-    <p>Shared</p>
-    <div>Global Counter: {{ counter }}</div>
-    <button @click="incrementEv">Increment</button>
-    <button @click="decrementEv">Decrement</button>
+    <p>Global Widget</p>
+    <div>Counter: {{ GlobalCounter }}</div>
+    <button class="button" @click="decrementGlobalCounterEv">-</button>
+    <button class="button" @click="incrementGlobalCounterEv">+</button>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
 import { counter } from "../models";
 
-export default Vue.extend({
+export default {
   name: "GlobalCounter",
   effector: {
-    counter: counter.$counter,
+    GlobalCounter: counter.$counter,
   },
   methods: {
-    incrementEv: counter.incrementEv,
-    decrementEv: counter.decrementEv,
+    incrementGlobalCounterEv: counter.incrementEv,
+    decrementGlobalCounterEv: counter.decrementEv,
   },
-});
+};
 </script>
+
+<style scoped>
+.button {
+  padding: 10px 20px;
+}
+</style>

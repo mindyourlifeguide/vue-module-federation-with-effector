@@ -2,7 +2,7 @@ const ModuleFederationPlugin =
   require("webpack").container.ModuleFederationPlugin;
 
 module.exports = {
-  publicPath: "http://localhost:8080/",
+  publicPath: "auto",
   configureWebpack: {
     optimization: {
       splitChunks: false,
@@ -10,12 +10,15 @@ module.exports = {
     plugins: [
       new ModuleFederationPlugin({
         name: "host",
-        filename: "remoteEntry.js",
         remotes: {
-          user: "user@http://localhost:9000/remoteEntry.js",
-          chat: "chat@http://localhost:9001/remoteEntry.js",
+          app1: "app1@http://localhost:3001/remoteEntryApp1.js",
+          app2: "app2@http://localhost:3002/remoteEntryApp2.js",
         },
       }),
     ],
+  },
+  devServer: {
+    open: true,
+    port: 3000,
   },
 };

@@ -1,36 +1,37 @@
 <template>
   <div class="root">
-    ROOT APP
+    HOST APP
+    <UserName />
     <GlobalCounter />
-    <LocalCounter />
-    <ChatWeb />
-    <UserWeb />
+    <App1 />
+    <App2 />
   </div>
 </template>
 
 <script>
-import Vue from "vue";
 import GlobalCounter from "@mvp/shared/widgets/GlobalCounter.vue";
-import LocalCounter from "@mvp/shared/widgets/LocalCounter.vue";
-export default Vue.extend({
-  name: "RootApp",
+
+export default {
+  name: "HostApp",
   components: {
     GlobalCounter,
-    LocalCounter,
-    ChatWeb: () => import("chat/ChatWeb"),
-    UserWeb: () => import("user/UserWeb"),
+    App1: () => import("app1/App1"),
+    App2: () => import("app2/App2"),
+    UserName: () => import("app2/UserName"),
   },
-});
+};
 </script>
 
 <style scoped>
 .root {
+  padding: 10px;
+  margin: 10px;
+  border: 14px solid lightblue;
   background: lightblue;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

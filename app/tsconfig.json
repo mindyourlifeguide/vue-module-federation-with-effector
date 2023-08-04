@@ -18,6 +18,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@mvp/shared": [
+        "@mvp/shared/*"
       ]
     },
     "lib": [

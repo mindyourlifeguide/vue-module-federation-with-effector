@@ -1,12 +1,16 @@
 {
   "private": true,
   "scripts": {
+    "dev": "turbo run dev",
+    "serve": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@turbo/gen": "1.10.12",
     "eslint": "7.32.0",
     "@mvp/eslint-config-base":"workspace:*",
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "turbo": "latest"
   },
   "packageManager": "pnpm@7.15.0",
   "name": "projects"

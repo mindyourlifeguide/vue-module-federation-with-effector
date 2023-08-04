@@ -1,4 +1,4 @@
-import { createStore, createEvent, sample } from "effector";
+import { createEvent, createStore, sample } from "effector";
 import { createFactory, invoke } from "@withease/factories";
 import { debug } from "patronum";
 

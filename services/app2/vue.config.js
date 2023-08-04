@@ -1,24 +1,54 @@
 const ModuleFederationPlugin =
   require("webpack").container.ModuleFederationPlugin;
+const deps = require("./package.json").dependencies;
 
 module.exports = {
-  publicPath: "http://localhost:9000/",
+  publicPath: "auto",
   configureWebpack: {
     optimization: {
       splitChunks: false,
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "user",
-        filename: "remoteEntry.js",
-        library: { type: "var", name: "user" },
+        name: "app2",
+        filename: "remoteEntryApp2.js",
+        remotes: {
+          app1: "app1@http://localhost:3001/remoteEntryApp1.js",
+        },
+        shared: {
+          vue: {
+            singleton: true,
+            requiredVersion: deps.vue,
+          },
+          effector: {
+            singleton: true,
+            requiredVersion: deps.effector,
+          },
+          "effector-vue": {
+            singleton: true,
+            requiredVersion: deps["effector-vue"],
+          },
+          patronum: {
+            singleton: true,
+            requiredVersion: deps.patronum,
+          },
+          "@withease/factories": {
+            singleton: true,
+            requiredVersion: deps["@withease/factories"],
+          },
+          "@mvp/shared": {
+            singleton: true,
+            requiredVersion: deps["@mvp/shared"],
+          },
+        },
         exposes: {
-          "./UserWeb": "./src/App.vue",
+          "./App2": "./src/App2.vue",
+          "./UserName": "./src/UserName/index.vue",
         },
       }),
     ],
   },
   devServer: {
-    port: 9000,
+    port: 3002,
   },
 };
